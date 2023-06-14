@@ -15,6 +15,38 @@ int optional(int a, int b, [int? c]){
   }
 }
 
+class Microphone{
+
+  //Instance variables, member variables
+  late String name;
+  late String color;
+  late int model = 4444;
+
+  /*Microphone(String name, String color, int model){
+    this.name = name;
+    this.color = color;
+    this.model = model;
+  }*/
+  //これはコンストラクタ宣言と等価
+
+  Microphone(this.name, this.color, this.model);
+
+
+  Microphone.initialize(this.name, this.color, this.model){
+    print("$name is printed by constructor");
+    //名前付きコンストラクタ
+  }
+
+  String get getName => name;   //getter
+  set setName(String value) => name = value;    //setter
+
+  void printmodel(){
+    print(model);
+  }
+//以前は必要なかったlateオプションが必要。lateを付けたうえで初期化は可能
+//ただし、初期化しなかった場合はどこかで初期化必要
+}
+
 void main(List<String> arguments) { //entry point for execution
   var country = 'Mozambique';
   print(country);
@@ -90,6 +122,12 @@ void main(List<String> arguments) { //entry point for execution
   changevalue();
   print(outside);
   //print(inside);       中の定義は外では呼べない
+
+
+
+
+
+
 }
 
 
