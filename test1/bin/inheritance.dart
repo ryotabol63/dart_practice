@@ -38,8 +38,43 @@ class Paulo extends Person{
   }
 }
 
-main(List<String> arguments){
+class Location extends Object{//toString を使えるようにextend
+  //Objectは最も基本のクラスなのでextends Objectは省略できる。（tostringはそのまま使える。）
+  num lat,lng;  // instance variables or member fields
 
+  Location(this.lat, this.lng);
+  Location.create(this.lat, this.lng);
+  //named constructor
+}
+
+class ElevatedLocation extends Location{
+  num elevation;
+  late var dif = elevation - lat;
+  ElevatedLocation(super.lat, super.lng, this.elevation);  //call Location() constructor
+  ElevatedLocation.create(super.lat, super.lng, this.elevation);  //call Location() named constructor
+  @override
+  String toString() {
+    var result = "$lat $lng $elevation";
+    // TODO: implement toString
+    return result;
+  }
+}
+
+main(List<String> arguments){
+  String name = 'Bonni';
+  name.toString();
+  print(name);
+  Object object = new Object();
+  object.toString();
+  print(object);
+
+  var elevated = ElevatedLocation(23.89, -12.31, 90);
+  print("location=${elevated.lat}, ${elevated.lng}, ${elevated.elevation}");
+  print(elevated.dif);
+  var elevated2 = ElevatedLocation.create(23.44, 111, 333);
+  print(elevated2.dif);
+  print(elevated.toString());
+  /*
   var bonni = new Bonni();
   bonni.name = 'Bonni';
   bonni.showName();
@@ -59,4 +94,6 @@ main(List<String> arguments){
   paulo.sayHello();   //overrideで処理を追加している
   bonni.showNationality();
   paulo.showNationality();
+  */
+
 }
