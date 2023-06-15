@@ -1,3 +1,52 @@
+
+abstract class Animal{
+  //抽象クラス
+  void breathe();
+  //実装は具体的なクラスにゆだねるが実装させたいメソッドを定義
+  void makeNoise();//{
+    //あんまり褒められた文法じゃない気がする
+    // print("Making animal noises!");
+  //}
+
+}
+
+abstract class IsFunny{
+  void funny();//これはInterfaceとすべきとして実装
+}
+
+class Comedian extends Person implements IsFunny{
+  @override
+  void funny() {
+    // TODO: implement funny
+    print("comedy");
+    //interfaceとしてimplementしたのでメソッドの実装を書かなければいけない
+  }
+  void comedy(){
+    print("$name made people laugh");
+    //Personをextendしているので変数を使える。
+  }
+}
+
+class Tiger extends Animal{
+  //抽象クラスを継承
+  @override
+  void breathe() {
+    // TODO: implement breathe
+    //抽象クラスを継承したので（実装のないメソッドの）実装をしなければいけない。
+    //※基本抽象クラスにはメソッドを実装しないので全メソッド実装必要あり
+    print('Tiger breathe');
+  }
+
+  @override
+  void makeNoise() {
+    // TODO: implement makeNoise
+    print("Tiger noise");
+  }
+
+}
+
+
+
 class Person{
   late String name, lastName, nationality;
   late int age;
@@ -61,6 +110,17 @@ class ElevatedLocation extends Location{
 }
 
 main(List<String> arguments){
+  //var animal = Animal();    //抽象クラスはインスタンス化できない
+  var tiger = Tiger();
+  tiger.breathe();
+  tiger.makeNoise();
+  var comedian = Comedian();
+  comedian.name = 'ken';
+  print(comedian.name);
+  comedian.funny();
+  comedian.comedy();
+  //comedianはpersonを継承かつIsFunnyインターフェースを実装
+  //https://zenn.dev/iwaku/articles/2020-12-16-iwaku
   String name = 'Bonni';
   name.toString();
   print(name);
