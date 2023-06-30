@@ -14,6 +14,7 @@ class Microphone{
   //これはコンストラクタ宣言と等価
 
   Microphone(this.name, this.color, this.model);
+  //コンストラクタ
 
 
   Microphone.initialize(this.name, this.color, this.model){
